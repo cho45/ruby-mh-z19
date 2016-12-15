@@ -120,6 +120,7 @@ module MH_Z19
 		def finish
 			@queue.clear
 			@read_thread.kill
+			@process_thread.kill
 		end
 	end
 end
