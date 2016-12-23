@@ -80,7 +80,7 @@ module MH_Z19
 				Thread.abort_on_exception = true
 				prev = nil
 				th = 0; tl = 0
-				GPIO.trigger(26, :both) do |v|
+				GPIO.trigger(@pin, :both) do |v|
 					unless prev
 						prev = Time.now
 						next
