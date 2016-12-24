@@ -71,8 +71,8 @@ module MH_Z19
 			packet[0] = STARTING_BYTE
 			packet[1] = @sensor_id
 			packet[2] = CMD_CALIBRATE_SPAN_POINT
-			packet[3] = packet[0]
-			packet[4] = packet[1]
+			packet[3] = packed[0].ord
+			packet[4] = packed[1].ord
 			packet[8] = checksum(packet)
 			@io.write packet.pack("C*")
 			# no return value
