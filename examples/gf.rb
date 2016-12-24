@@ -10,7 +10,7 @@ require 'uri'
 uri = URI(ENV['GF_URI']) rescue nil
 
 case
-when ENV['PORT']
+when ENV['PORT'] && !ENV['PORT'].empty?
 	co2 = MH_Z19::Serial.new(ENV['PORT'])
 	loop do
 		begin

@@ -34,6 +34,10 @@ module MH_Z19
 		end
 
 		def gas_concentration
+			read_concentration_detail[:concentration]
+		end
+
+		def read_concentration_detail
 			packet = Array.new(9) { 0 }
 			packet[0] = STARTING_BYTE
 			packet[1] = @sensor_id
@@ -49,8 +53,11 @@ module MH_Z19
 			unless packet[8] == sum
 				raise InvalidPacketException, "packet checksum is invalid"
 			end
-			
-			(packet[2] << 8) | packet[3]
+			{
+				concentration: (packet[2] << 8) | packet[3],
+				temperature: (packet[4] - 40),
+				status: packet[5],
+			}
 		end
 
 		def calibrate_zero_point
