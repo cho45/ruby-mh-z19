@@ -105,6 +105,7 @@ class CLI
 		exit
 	rescue Exception => e
 		p e
+		sleep 1
 		retry
 	end
 end
